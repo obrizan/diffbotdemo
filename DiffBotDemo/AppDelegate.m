@@ -8,11 +8,14 @@
 
 #import "AppDelegate.h"
 
+#import "DiffbotService.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+	[DiffbotService setToken:@"af53252cb32735368bf65c1b03287324"];
+	
     return YES;
 }
 							

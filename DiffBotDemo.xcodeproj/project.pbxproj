@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		BC148BD0187599AE00B8A62A /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BC148BD1187599AE00B8A62A /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				BC148BD418759A3600B8A62A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		BC148B971875877800B8A62A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC148B961875877800B8A62A /* Foundation.framework */; };
 		BC148B991875877800B8A62A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC148B981875877800B8A62A /* CoreGraphics.framework */; };
@@ -21,6 +35,7 @@
 		BC148BB81875877800B8A62A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC148B9A1875877800B8A62A /* UIKit.framework */; };
 		BC148BC01875877800B8A62A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC148BBE1875877800B8A62A /* InfoPlist.strings */; };
 		BC148BC21875877800B8A62A /* DiffBotDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC148BC11875877800B8A62A /* DiffBotDemoTests.m */; };
+		BC148BCE18758CEE00B8A62A /* DiffbotService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC148BCD18758CEE00B8A62A /* DiffbotService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +68,8 @@
 		BC148BBD1875877800B8A62A /* DiffBotDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DiffBotDemoTests-Info.plist"; sourceTree = "<group>"; };
 		BC148BBF1875877800B8A62A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC148BC11875877800B8A62A /* DiffBotDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiffBotDemoTests.m; sourceTree = "<group>"; };
+		BC148BCC18758CEE00B8A62A /* DiffbotService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiffbotService.h; sourceTree = "<group>"; };
+		BC148BCD18758CEE00B8A62A /* DiffbotService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiffbotService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +99,7 @@
 		BC148B8A1875877700B8A62A = {
 			isa = PBXGroup;
 			children = (
+				BC148BCB18758C9200B8A62A /* DiffBotService */,
 				BC148B9C1875877800B8A62A /* DiffBotDemo */,
 				BC148BBB1875877800B8A62A /* DiffBotDemoTests */,
 				BC148B951875877800B8A62A /* Frameworks */,
@@ -152,6 +170,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BC148BCB18758C9200B8A62A /* DiffBotService */ = {
+			isa = PBXGroup;
+			children = (
+				BC148BCC18758CEE00B8A62A /* DiffbotService.h */,
+				BC148BCD18758CEE00B8A62A /* DiffbotService.m */,
+			);
+			name = DiffBotService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -219,6 +246,7 @@
 			targets = (
 				BC148B921875877800B8A62A /* DiffBotDemo */,
 				BC148BB31875877800B8A62A /* DiffBotDemoTests */,
+				BC148BD0187599AE00B8A62A /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +272,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BC148BD418759A3600B8A62A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"Feedbot\" \\\n--company-id \"com.simplicate\" \\\n--output \"~/Projects/Help/${PROJECT_NAME}\" \\\n--install-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--merge-categories \\\n--exit-threshold 2 \\\n--docset-platform-family iphoneos \\\n--ignore \"*.m\" \\\n--include \"${PROJECT_DIR}/${PROJECT_NAME}/Documentation/Images\" \\\n--ignore \"LoadableCategory.h\" \\\n--index-desc \"${PROJECT_DIR}/readme.markdown\" \\\n\"${PROJECT_DIR}/DiffbotService.h\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BC148B8F1875877800B8A62A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -251,6 +295,7 @@
 			files = (
 				BC148BAD1875877800B8A62A /* ViewController.m in Sources */,
 				BC148BA71875877800B8A62A /* AppDelegate.m in Sources */,
+				BC148BCE18758CEE00B8A62A /* DiffbotService.m in Sources */,
 				BC148BA31875877800B8A62A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +486,20 @@
 			};
 			name = Release;
 		};
+		BC148BD2187599AE00B8A62A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BC148BD3187599AE00B8A62A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -466,6 +525,14 @@
 			buildConfigurations = (
 				BC148BC91875877800B8A62A /* Debug */,
 				BC148BCA1875877800B8A62A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BC148BD1187599AE00B8A62A /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC148BD2187599AE00B8A62A /* Debug */,
+				BC148BD3187599AE00B8A62A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

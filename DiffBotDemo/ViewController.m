@@ -8,22 +8,51 @@
 
 #import "ViewController.h"
 
+#import "DiffbotService.h"
+
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionText;
+@property (weak, nonatomic) IBOutlet UITextField *URLText;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad
+
+//==============================================================================
+
+
+- (IBAction)getProductClicked:(id)sender
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[self.URLText resignFirstResponder];
+	[self.activity startAnimating];
+	
+	NSURL *URL = [NSURL URLWithString:self.URLText.text];
+	
+	// Call Diffbot.
+	[DiffbotService getProductForURL:URL block:^(NSArray *products, NSError *error)
+	{
+		[self.activity stopAnimating];
+		
+		if (error)
+		{
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles: nil];
+			[alert show];
+			return;
+		}
+		
+		NSDictionary *product = products[0];
+		
+		self.titleLabel.text = product[@"title"];
+		self.priceLabel.text = product[@"offerPrice"];
+		self.descriptionText.text = product[@"description"];
+	}];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+//==============================================================================
 
 @end
